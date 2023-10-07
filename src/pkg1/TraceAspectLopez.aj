@@ -2,12 +2,10 @@ package pkg1;
 
 public aspect TraceAspectLopez {
 
-		pointcut classToTrace(): within(ComponentApp) || within(DataApp)
-						|| within(ServiceApp);
+		pointcut classToTrace(): within(ComponentApp) || within(DataApp) || within(ServiceApp);
 		
 		pointcut methodToTrace():  classToTrace() &&  execution(* *(..));
 
-	    
 	    before(): methodToTrace() {
 	        System.out.println("[BGN]" + thisJoinPointStaticPart.getSignature() + ", " +
 	                thisJoinPointStaticPart.getSourceLocation().getLine());
